@@ -12,52 +12,52 @@ class FilterCollection implements \ArrayAccess, \Iterator, \Countable
     private $filterData = array();
     private $index = 0;
 
-    public function rewind()
+    public function rewind(): void
     {
         $this->index = 0;
     }
-    public function current()
+    public function current(): mixed
     {
         return $this->filterData[$this->index];
     }
 
-    public function key()
+    public function key(): string|float|int|bool|null
     {
         return $this->index;
     }
 
-    public function next()
+    public function next(): void
     {
         $this->index++;
     }
 
-    public function valid()
+    public function valid(): bool
     {
         return (isset($this->filterData[$this->index]));
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->filterData);
     }
 
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return (isset($this->filterData[$offset]))
             ? $this->filterData[$offset] : null;
     }
 
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $this->filterData[$offset] = $value;
     }
 
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->filterData[$offset]);
     }
 
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         if (isset($this->filterData[$offset])) {
             unset($this->filterData[$offset]);
