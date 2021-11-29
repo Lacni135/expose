@@ -21,7 +21,7 @@ class FilterCollection implements \ArrayAccess, \Iterator, \Countable
         return $this->filterData[$this->index];
     }
 
-    public function key(): string|float|int|bool|null
+    public function key(): mixed
     {
         return $this->index;
     }
